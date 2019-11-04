@@ -1,8 +1,14 @@
+const dotenv = require('dotenv')
+// making sure dotenv is only executed when not in production mode 
+if(process.env.NODE_ENV !== 'production'){
+  dotenv.config()
+}
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    title: `Contentful Blog`,
+    author: `Will Smith`,
+    description: `A practise blog demonstrating what Gatsby & contentful can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
       twitter: `kylemathews`,
@@ -74,5 +80,15 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options:{
+        spaceId: `adb9vkv1ydhc`,
+        // accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+        accessToken: `beHQhtZ6WwK_j6qq9XYZcqF_D3glqO9hQQwudcZLAtU`
+
+      }
+    },
+    `@contentful/gatsby-transformer-contentful-richtext`,
   ],
 }
